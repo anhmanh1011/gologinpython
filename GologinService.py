@@ -63,7 +63,7 @@ def create_profile(name: str, token: str) -> GoLogin:
 
 
 def getProfileIdByName(token: str, name: str):
-    url = API_BASE_URL + "/browser/v2?search=" + name
+    url = API_BASE_URL + "/browser/v2"
 
     payload = {}
     headers = {
@@ -72,6 +72,9 @@ def getProfileIdByName(token: str, name: str):
     }
 
     response = json.loads(requests.request("GET", url, headers=headers, data=payload).content.decode('utf-8'))
-    if len(response.get('profiles')) > 0:
-        return response.get('profiles')[0].get('id')
+    print(response)
+    profiles = response.get('profiles')
+    for profile in profiles:
+        if profile.get('name') == name:
+            return profile.get('id')
     return None

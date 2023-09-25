@@ -63,11 +63,10 @@ import script.register as register
 
 token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTBlNWEwZWUxOTZhMTEyMWVkZDY5NDEiLCJ0eXBlIjoiZGV2Iiwiand0aWQiOiI2NTBlNWI1ZTM2MmEzNGNkZjFmNzhhNDAifQ.W5BDEO-yVBrtxVvqi78rf8GWQ4_Z-Yt4xAu7l0Fydyg'
 if __name__ == '__main__':
-    # register_ops: register.Register_Options = register.Register_Options('jerichkloeckv', 'Anhmanhbu8',
-    #                                                                     'jerichkloeckv@hotmail.com', 'nk71dG28')
-    register_ops: register.Register_Options = register.Register_Options('birtonradeln', 'Anhmanhbu8',
-                                                                        'birtonradeln@hotmail.com', '8N1quc13')
 
+    register_ops: register.Register_Options = register.Register_Options('weelerteetsy', 'Anhmanhbu8',
+                                                                        'weelerteetsy@hotmail.com', 'I8MJ8A29',
+                                                                        'Weelerteetsy', 'Roy')
 
     gl = gologinService.create_profile(register_ops.username_github, token)
 
