@@ -6,11 +6,11 @@ from email.header import decode_header
 # IMAP server settings for Outlook.com/Hotmail
 imap_server = 'outlook.office365.com'
 imap_port = 993  # IMAPS (secure) port
-username = 'weelerteetsy@hotmail.com'
-password = 'I8MJ8A29'
+username = 'sebzorydhm@outlook.com'
+password = 'uteHPWL516'
 
 
-def get_code_from_mail(username: str, password: str):
+def get_code_from_mail(username: str, password: str, pattern: str):
     # Connect to the IMAP server
     github_mail = 'noreply@github.com'
     result = ''
@@ -34,6 +34,7 @@ def get_code_from_mail(username: str, password: str):
     # Now you can perform various operations on the mailbox, such as fetching emails, marking them as read, etc.
 
     # Search for all emails (unseen and seen)
+    # search_criteria = f'SEEN FROM "{github_mail}"'
     search_criteria = f'UNSEEN FROM "{github_mail}"'
 
     status, email_ids = mail_server.search(None, search_criteria)
@@ -67,7 +68,6 @@ def get_code_from_mail(username: str, password: str):
                 print("------------")
                 print(email_body)
                 print("------------")
-                pattern = r'Verification code: (\d{6})'
 
                 # Use the re.search() function to search for the pattern in the email.
                 match = re.search(pattern, email_body)
@@ -82,4 +82,4 @@ def get_code_from_mail(username: str, password: str):
 
 
 if __name__ == '__main__':
-    print('code: ' + get_code_from_mail(username, password))
+    print('code: ' + get_code_from_mail(username, password,r'(\d{8})'))

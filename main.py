@@ -1,10 +1,14 @@
 import traceback
+from webbrowser import Chrome
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chromium.service import ChromiumService
 
-import GologinService as gologinService
-import script.register as register
+import service.RegisterService as register
+from service import GologinService
+from webdriver_manager.chrome import ChromeDriverManager
 
 #
 # gl = GoLogin({
@@ -68,12 +72,15 @@ if __name__ == '__main__':
                                                                         'weelerteetsy@hotmail.com', 'I8MJ8A29',
                                                                         'Weelerteetsy', 'Roy')
 
-    gl = gologinService.create_profile(register_ops.username_github, token)
+    gl = GologinService.create_profile(register_ops.username_github, token)
 
     debugger_address = gl.start()
     chrome_options = Options()
     chrome_options.add_experimental_option("debuggerAddress", debugger_address)
-    driver = webdriver.Chrome(options=chrome_options)
+    # cs = Service(executable_path=r'/Users/daoducmanh/PycharmProjects/gologinpython/chromedriver')
+    # driver = webdriver.Chrome(service=cs, options=chrome_options)
+    driver = webdriver.Chrome(ChromeDriverManager().install())
+
     try:
         register.register_github_student_pack(driver, register_ops)
     except Exception as ex:
